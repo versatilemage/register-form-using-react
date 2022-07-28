@@ -1,0 +1,22 @@
+.login-form {
+    background: rgb(200, 200, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em 0;
+}
+
+.form-header {
+    background: rgb(255, 150, 255);
+    text-align: center;
+    font-size: 2em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    padding: 1em 0;
+}
+
+.login-form-container {
+    height: 50vh;
+    width: 40%;
+    margin: 5em auto;
+}

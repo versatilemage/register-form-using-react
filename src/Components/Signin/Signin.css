@@ -1,0 +1,47 @@
+body{
+    box-sizing: border-box;
+}
+
+.signin-form-container {
+    height: 80%;
+    width: 50%;
+    margin: 3em auto;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 200, 200);
+    align-items: center;
+    padding: 2em 0em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+/* .form-container {
+    width: 50%;
+    margin: 5em auto;
+    height: 50vh;
+    background: rgb(255, 200, 200);
+    padding: 3em;
+} */
+
+input {
+    margin: 1.1em;
+    padding: 1.5em;
+    border: solid 2px black;
+    box-shadow: 0 0 0.5em black;
+}
+
+.signin-submit-button {
+    padding: 0.5em 2em;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-radius: 0.5em;
+    color: white;
+    background: green;
+}
+
+.error-msg {
+    color: red;
+}
