@@ -1,0 +1,46 @@
+.page-header {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  background: rgb(0, 200, 200);
+  padding: 2.5em 0;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 1em;
+}
+
+.link-button {
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.link-button-bottom {
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 600;
+  background: green;
+  border-radius: 0.5em;
+  padding: 0.5em 2em;
+  color: white;
+  border: solid 2px black;
+}
+.home-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em 0;
+  background: rgb(0, 200, 200);
+}
+
+.footer-text {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.link-logo {
+  text-align: left;
+  margin-left: 1em;
+}
