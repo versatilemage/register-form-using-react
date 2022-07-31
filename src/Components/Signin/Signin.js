@@ -4,44 +4,47 @@ import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom"
 // import Login from "../Login/Login";
 
-function Signin ({details, setdetails, errors, seterrors}) {
+function Signin () {
+    const initialvalues = {
+        username: "",
+        password: "",
+        confirmpassword: "",
+        phonenumber: "",
+        mailid: "",
+      }
+      const [UserDetails, setUserDetails] = useState(initialvalues)
+      const [allErrors, setallErrors] = useState({})
 
     const [submit, setsubmit] = useState(false)
 
     let navigate = useNavigate(); 
 
     const handleChange = (e) => {
-        // console.log(event.target.value)
+        // console.log(e.target.value)
         const {name, value} = e.target
-        setdetails({...details, [name]: value})
+        setUserDetails({...UserDetails, [name]: value})
         // console.log(setdetails)
-        // console.log(details,"details")
-        console.log(details,"details")
+        console.log(UserDetails,"UserDetails")
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        seterrors(validate(details))
-        // console.log(details)
+        setallErrors(validate(UserDetails))
+        // console.log(UserDetails)
         setsubmit(true)
         // let regname = document.querySelector(".signin-username").value
-        let clientsArr = [];
-      if(!localStorage.getItem('User')) {
-         clientsArr.push(details);
-         localStorage.setItem('User', JSON.stringify(clientsArr));
-      } else {
-         clientsArr = JSON.parse(localStorage.getItem('User'));
-         clientsArr.push(details);
-         localStorage.setItem('User', JSON.stringify(clientsArr));
-      }
+        let clientsArr = JSON.parse(localStorage.getItem('User')) || [];
+        clientsArr.push(UserDetails);
+        localStorage.setItem('User', JSON.stringify(clientsArr));
+        // navigate("/login")
     }
 
     useEffect(() => {
         // console.log(errors)
-        if(Object.keys(errors).length === 0 && submit){
-            console.log(details)
+        if(Object.keys(allErrors).length === 0 && submit){
+            console.log(UserDetails)
         }
-    },[errors])
+    },[allErrors])
 
     const validate = (val) => {
         const err = {}
@@ -73,6 +76,7 @@ function Signin ({details, setdetails, errors, seterrors}) {
 
         return err
     }
+
     return (
         <>
             <div className="signin-form-container">
@@ -82,53 +86,53 @@ function Signin ({details, setdetails, errors, seterrors}) {
                         type="text"
                         className="signin-username"
                         placeholder="Username"
-                        value={details.username}
+                        value={UserDetails.username}
                         name="username"
                         onChange={handleChange}/>
-                        <p className="error-msg">{errors.username}</p>
+                        <p className="error-msg">{allErrors.username}</p>
 
                         <input 
                         type="password"
                         className="signin-password"
                         placeholder="password"
-                        value={details.password}
+                        value={UserDetails.password}
                         name="password"
                         onChange={handleChange}/>
-                        <p className="error-msg">{errors.password}</p>
+                        <p className="error-msg">{allErrors.password}</p>
 
                         <input 
                         type="password"
                         className="signin-confirmpassword"
                         placeholder="confirm password"
-                        value={details.confirmpassword}
+                        value={UserDetails.confirmpassword}
                         name="confirmpassword"
                         onChange={handleChange}/>
-                        <p className="error-msg">{errors.confirmpassword}</p>
+                        <p className="error-msg">{allErrors.confirmpassword}</p>
 
                         <input 
                         type="number"
                         className="signin-phonenumber"
                         placeholder="phone number"
-                        value={details.phonenumber}
+                        value={UserDetails.phonenumber}
                         name="phonenumber"
                         onChange={handleChange}/>
-                        <p className="error-msg">{errors.phonenumber}</p>
+                        <p className="error-msg">{allErrors.phonenumber}</p>
 
                         <input 
                         type="email"
                         className="signin-mailid"
                         placeholder="email"
-                        value={details.mailid}
+                        value={UserDetails.mailid}
                         name="mailid"
                         onChange={handleChange}/>
-                        <p className="error-msg">{errors.mailid}</p>
-                        <button className="signin-submit-button" onSubmit={() => navigate("Login")}>submit</button>
+                        <p className="error-msg">{allErrors.mailid}</p>
+                        <button className="signin-submit-button">submit</button>
                     </form>
             </div>
 
             <footer className="home-footer">
                 <p className="footer-text">Already a user</p>
-                    <Link to="login" className="link-button-bottom">Login</Link>
+                    <Link to="/login" className="link-button-bottom">Login</Link>
             </footer>
         </>
     )
